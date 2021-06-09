@@ -1,5 +1,5 @@
-var path, boy, Coin1;
-var pathImg,boyImg, carImg, coinGif;
+var path, boy, Coin1, liquid;
+var pathImg,boyImg, carImg, coinGif, liquidImg;
 var Car;
 var PLAY=1;
 var END=0;
@@ -12,7 +12,8 @@ function preload(){
   carImg=loadImage("alive_virus.png");
   coinGif=loadImage("vaccine_animation.gif");
   maskImg=loadImage("mask.png");
-  GameOverImg=loadImage("gameOver.png")
+  liquidImg=loadImage("sprayed_liquid.png");
+  GameOverImg=loadImage("gameOver.png");
 }
 
 function setup() {
@@ -26,6 +27,9 @@ function setup() {
   boy = createSprite(width-70,height-100,20,20);
   boy.addImage("SahilRunning",boyImg);
   boy.scale=0.12;
+
+  
+  
   
   CarGroup=new Group();
   CoinGroup=new Group();
@@ -60,7 +64,12 @@ function draw() {
   if(path.y>600){
     path.y=500;
   }
-    
+  if(keyDown("space")){
+    shoot();
+  }
+  
+  
+
   spawnCoins();  
   spawnCars();
   drawSprites();
@@ -87,30 +96,59 @@ function spawnCars(){
     
     
     
-  var rand = Math.round(random(1,3));
+  var rand = Math.round(random(1,6));
     switch(rand) {
       case 1:
         Car.x=300;
-        Car.velocityY=(5+score/3);
+        Car.velocityY=(5+score);
         Car.addImage(carImg);
+        if(frameCount%250==0 && frameCount>0){
         Car.scale=0.2;
-              break;
+        }
+               break;
       case 2:
         Car.x=100;
-        Car.velocityY=(5+score/3);
+        Car.velocityY=(5+score);
         Car.addImage(carImg);
-        Car.scale=0.2;
+        if(frameCount%500==0 && frameCount>0){
+          Car.scale=0.2;
+        }
               break;
       case 3:
         Car.x=500;
         Car.velocityY=(5+score);
         Car.addImage(carImg);
-        Car.scale=0.2;
+        if(frameCount%750==0 && frameCount>0){
+          Car.scale=0.2;
+        }
               break; 
+      case 4:
+        Car.x=500;
+        Car.velocityY=(5+score);
+        Car.addImage(carImg);
+        if(frameCount%1000==0 && frameCount>0){
+          Car.scale=0.2;
+        }
+              break; 
+                      
+      case 5:
+        Car.x=600;
+        Car.velocityY=(5+score);
+        Car.addImage(carImg);
+        Car.scale=0.2;
+              break;  
+                      
+      case 6:
+        Car.x=400;
+        Car.velocityY=(5+score);
+        Car.addImage(carImg);
+        Car.scale=0.2;
+              break;         
       default: break;
       
       
     }
+    
     
     CarGroup.add(Car);
   }
@@ -120,7 +158,7 @@ function spawnCoins(){
   if (frameCount%70==0){
      
    
-    
+  
    
   var rand3 = Math.round(random(1,3));
     switch(rand3) {
@@ -143,12 +181,19 @@ function spawnCoins(){
         Coin.velocityY=(5+score/3);
               break;
       default: break;
+    }
       
-      
-    } 
+    
+    
     
   CoinGroup.add(Coin);
   
  }
 }
-
+function shoot(){
+  var liquid=createSprite(200,400);
+  liquid.x=boy.x;
+  liquid.y=boy.y;
+  liquid.addImage(liquidImg);
+  liquid.velocityY=2;
+}
