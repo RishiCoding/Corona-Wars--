@@ -64,9 +64,6 @@ function draw() {
   if(path.y>600){
     path.y=500;
   }
-  if(keyDown("space")){
-    shoot();
-  }
   
   
 
@@ -90,7 +87,7 @@ function draw() {
 }  
 
 function spawnCars(){
-  if (frameCount%125==0){
+  if (frameCount%100==0){
    Car=createSprite(200, -50, 20, 10);
    Car.scale=1;
     
@@ -100,47 +97,41 @@ function spawnCars(){
     switch(rand) {
       case 1:
         Car.x=300;
-        Car.velocityY=(5+score);
+        Car.velocityY=(7+score);
         Car.addImage(carImg);
-        if(frameCount%250==0 && frameCount>0){
         Car.scale=0.2;
-        }
                break;
       case 2:
         Car.x=100;
-        Car.velocityY=(5+score);
+        Car.velocityY=(7+score);
         Car.addImage(carImg);
-        if(frameCount%500==0 && frameCount>0){
-          Car.scale=0.2;
-        }
+        Car.scale=0.2;
+        
               break;
       case 3:
         Car.x=500;
-        Car.velocityY=(5+score);
+        Car.velocityY=(7+score);
         Car.addImage(carImg);
-        if(frameCount%750==0 && frameCount>0){
-          Car.scale=0.2;
-        }
+        Car.scale=0.2;
+        
               break; 
       case 4:
         Car.x=500;
-        Car.velocityY=(5+score);
+        Car.velocityY=(7+score);
         Car.addImage(carImg);
-        if(frameCount%1000==0 && frameCount>0){
-          Car.scale=0.2;
-        }
+        Car.scale=0.2;
               break; 
                       
       case 5:
         Car.x=600;
-        Car.velocityY=(5+score);
+        Car.velocityY=(7+score);
         Car.addImage(carImg);
         Car.scale=0.2;
               break;  
                       
       case 6:
         Car.x=400;
-        Car.velocityY=(5+score);
+        Car.velocityY=(7+score);
         Car.addImage(carImg);
         Car.scale=0.2;
               break;         
@@ -166,19 +157,19 @@ function spawnCoins(){
         Coin=createSprite(300, -50, 20, 10);
         Coin.addImage("coin", coinGif); 
         Coin.scale=0.05;
-        Coin.velocityY=(5+score/3);
+        Coin.velocityY=(5+score);
               break;
       case 2: 
         Coin=createSprite(100, -50, 20, 10);
         Coin.addImage("coin", coinGif); 
         Coin.scale=0.05;
-        Coin.velocityY=(5+score/3);
+        Coin.velocityY=(5+score);
               break;
       case 3:
         Coin=createSprite(500, -50, 20, 10);
         Coin.addImage("coin", coinGif); 
         Coin.scale=0.05;
-        Coin.velocityY=(5+score/3);
+        Coin.velocityY=(5+score);
               break;
       default: break;
     }
@@ -190,10 +181,4 @@ function spawnCoins(){
   
  }
 }
-function shoot(){
-  var liquid=createSprite(200,400);
-  liquid.x=boy.x;
-  liquid.y=boy.y;
-  liquid.addImage(liquidImg);
-  liquid.velocityY=2;
-}
+
