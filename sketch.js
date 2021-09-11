@@ -111,7 +111,7 @@ function spawnVirus1(){
    virus1.velocityY=(7+score);
    virus1.addImage(carImg);
    virus1.scale=0.2;
-   virus1.debug=true;
+  
    virus1.setCollider("circle",0,0,300);
    virusGroup.add(virus1);
   }
